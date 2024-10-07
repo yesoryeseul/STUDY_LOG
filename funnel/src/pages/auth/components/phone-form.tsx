@@ -1,8 +1,8 @@
 import { Box, Spacer } from "@chakra-ui/react";
-import LabelInput from "../../components/input/label-input";
-import CustomButton from "../../components/button/custom-button";
-import useForm from "../../hooks/useForm";
-import { RegisterData } from "../../type/auth-register-data";
+import LabelInput from "../../../components/input/label-input";
+import CustomButton from "../../../components/button/custom-button";
+import useForm from "../../../hooks/useForm";
+import { RegisterData } from "../../../type/auth-register-data";
 type PhoneFormProps = {
   onClickNext: (data: Pick<RegisterData, "phone">) => void;
 };

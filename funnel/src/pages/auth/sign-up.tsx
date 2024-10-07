@@ -1,9 +1,9 @@
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import IdPwForm from "./id-pw-form";
-import EmailForm from "./email-form";
-import PhoneForm from "./phone-form";
-import CompleteAuth from "./complete-auth";
+import IdPwForm from "./components/id-pw-form";
+import EmailForm from "./components/email-form";
+import PhoneForm from "./components/phone-form";
+import CompleteAuth from "./components/complete-auth";
 import { RegisterData } from "../../type/auth-register-data";
 import { useSearchParams } from "react-router-dom";
 
