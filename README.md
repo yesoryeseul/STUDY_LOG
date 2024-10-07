@@ -9,4 +9,4 @@
 
 💻 [응집도를 높인 리팩토링 - 브랜치(funnnel-refactor-cohesion)](https://github.com/yesoryeseul/STUDY_LOG/tree/funnel-refactor-cohesion)
 
-💻 [추상화를 통한 라이브러리화 리팩토링 - 브랜치(funnnel-refactor-abstraction)](https://github.com/yesoryeseul/STUDY_LOG/tree/funnel-refactor-abstraction)
+💻 [추상화를 통한 라이브러리화 리팩토링 - 브랜치(funnel-refactor-abstraction)](https://github.com/yesoryeseul/STUDY_LOG/tree/funnel-refactor-abstraction)
