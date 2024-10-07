@@ -1,6 +1,6 @@
 import { Box, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { RegisterData } from "../../../type/auth-register-data";
+import { RegisterData } from "../../../type/auth-register-data-types";
 
 type CompleteAuthProps = {
   registerData: RegisterData;

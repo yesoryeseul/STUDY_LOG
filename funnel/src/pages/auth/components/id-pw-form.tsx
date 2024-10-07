@@ -1,7 +1,7 @@
 import { Box, Spacer } from "@chakra-ui/react";
 import LabelInput from "../../../components/input/label-input";
 import CustomButton from "../../../components/button/custom-button";
-import { RegisterData } from "../../../type/auth-register-data";
+import { RegisterData } from "../../../type/auth-register-data-types";
 import useForm from "../../../hooks/useForm";
 
 type IdPwFormProps = {
