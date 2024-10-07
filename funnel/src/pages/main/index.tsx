@@ -20,7 +20,9 @@ const MainPage = () => {
       <Spacer />
       <CustomButton
         text="다음"
-        onClickNextMove={() => onClickNextPage({ navigate, path: "/login" })}
+        onClickNextMove={() =>
+          onClickNextPage({ navigate, path: "/signup?step=idPw" })
+        }
         colorScheme="purple"
         size="lg"
       />

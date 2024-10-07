@@ -1,12 +1,19 @@
 import { Box, Spacer } from "@chakra-ui/react";
 import LabelInput from "../../components/input/label-input";
 import CustomButton from "../../components/button/custom-button";
-import { updateAuthData } from "../../utils/update-auth-data";
-import { useNavigate } from "react-router-dom";
-import { onClickNextPage } from "../../utils/move-auth-next";
+import { RegisterData } from "../../type/auth-register-data";
+import useForm from "../../hooks/useForm";
 
-const EmailForm = () => {
-  const navigate = useNavigate();
+type EmailFormProps = {
+  onClickNext: (data: Pick<RegisterData, "email">) => void;
+};
+
+const EmailForm: React.FC<EmailFormProps> = ({ onClickNext }) => {
+  const { formData, handleChange } = useForm({ email: "" });
+
+  const handleNext = () => {
+    onClickNext(formData);
+  };
 
   return (
     <Box
@@ -19,7 +26,7 @@ const EmailForm = () => {
     >
       <Box display="flex" flexDirection="column" gap="5rem">
         <LabelInput
-          onChange={updateAuthData}
+          onChange={handleChange}
           id="email"
           type="email"
           label="이메일을 입력해주세요."
@@ -30,7 +37,7 @@ const EmailForm = () => {
         text="다음"
         colorScheme="purple"
         size="lg"
-        onClickNextMove={() => onClickNextPage({ navigate, path: "/phone" })}
+        onClickNextMove={handleNext}
       />
     </Box>
   );

@@ -1,19 +1,16 @@
 import { Box, Spacer } from "@chakra-ui/react";
 import LabelInput from "../../components/input/label-input";
 import CustomButton from "../../components/button/custom-button";
-import { updateAuthData } from "../../utils/update-auth-data";
-import { onClickNextPage } from "../../utils/move-auth-next";
-import { useNavigate } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+import { RegisterData } from "../../type/auth-register-data";
+type PhoneFormProps = {
+  onClickNext: (data: Pick<RegisterData, "phone">) => void;
+};
+const PhoneForm: React.FC<PhoneFormProps> = ({ onClickNext }) => {
+  const { formData, handleChange } = useForm({ phone: "" });
 
-const PhoneForm = () => {
-  const navigate = useNavigate();
-  const onClickNextMoveAndPostAuthInfo = () => {
-    onClickNextPage({
-      navigate,
-      path: "/complete",
-      // postData: authData,
-      // apiUrl: "/api",
-    });
+  const handleNext = () => {
+    onClickNext(formData);
   };
   return (
     <Box
@@ -26,7 +23,7 @@ const PhoneForm = () => {
     >
       <Box display="flex" flexDirection="column" gap="5rem">
         <LabelInput
-          onChange={updateAuthData}
+          onChange={handleChange}
           id="phone"
           label="휴대폰 번호를 입력해주세요."
         />
@@ -34,7 +31,7 @@ const PhoneForm = () => {
       <Spacer />
       <CustomButton
         text="다음"
-        onClickNextMove={onClickNextMoveAndPostAuthInfo}
+        onClickNextMove={handleNext}
         colorScheme="purple"
         size="lg"
       />
