@@ -11,5 +11,6 @@
 
 💻 [추상화를 통한 라이브러리화 리팩토링 - 브랜치(funnel-refactor-abstraction)](https://github.com/yesoryeseul/STUDY_LOG/tree/funnel-refactor-abstraction)
 
+<br />
 
 ## 2) resizeObserver를 통해 더보기 기능을 구현해보자
