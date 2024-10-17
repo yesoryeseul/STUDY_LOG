@@ -14,3 +14,7 @@
 <br />
 
 ## 2) resizeObserver를 통해 더보기 기능을 구현해보자
+
+<br />
+
+## 3) MouseEvent와 TouchEvent를 통해 드래그앤드롭을 구현해보자
