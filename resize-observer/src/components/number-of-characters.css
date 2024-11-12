@@ -1,0 +1,30 @@
+.container {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  max-width: 41rem;
+}
+
+.text-container {
+  position: relative;
+}
+
+.text-container .button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  margin-left: 0.3rem;
+}
+
+.text-container .button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -20px;
+  bottom: 0;
+  width: 20px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), #ffffff);
+  pointer-events: none;
+}

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import "./number-of-characters.css";
 
 /**
  *
@@ -21,15 +22,21 @@ const NumberOfChar = ({ text }) => {
     setLimit(text.length);
   };
   return (
-    <div>
-      {string}
-      {isShowMore && <button onClick={onClickMore}>...더보기</button>}
+    <div className="container">
+      <span className={isShowMore ? "text-container" : ""}>
+        {string}
+        {isShowMore && (
+          <button className="button" onClick={onClickMore}>
+            ...더보기
+          </button>
+        )}
+      </span>
     </div>
   );
 };
 
 NumberOfChar.propTypes = {
-  text: PropTypes.string.isRequired, // text는 문자열이며 필수 값으로 설정
+  text: PropTypes.string.isRequired,
 };
 
 export default NumberOfChar;
