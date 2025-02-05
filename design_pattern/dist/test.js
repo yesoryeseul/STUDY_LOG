@@ -28,6 +28,14 @@ class AC {
         this.hello = hello;
     }
 }
+// 같은 거!
+class AC3 {
+    name;
+    constructor(name) {
+        this.name = name;
+        this.name = name;
+    }
+}
 const ac2 = {
     hello: "world",
 };
