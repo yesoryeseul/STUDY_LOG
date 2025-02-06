@@ -25,3 +25,57 @@ function main() {
 ```
 
 단, 처음부터 단일 책임 원칙을 지키려하기 보다는 이를 위반하는 함수가 중복적으로 나올 때 리팩토링을 하면 좋다. 처음부터 원칙을 지키려하면 생산성이 떨어지기 때문!
+
+---
+
+## OCP - 개방-폐쇄 원칙 (Open/closed principle)
+
+- 정의: “소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.”
+- ex) factory method 패턴
+
+> 예를 들어 아래와 같은 코드가 있다고 가정해보자.
+
+```js
+function main(type) {
+  if (type === "a") {
+    doA();
+  } else if (type === "b") {
+    doB();
+  } else if (type === "c") {
+    doC();
+  } else if (type === "d") {
+    doD();
+  } else if (type === "e") {
+    doE();
+  }
+}
+```
+
+-> 여기서 보통 doF()가 필요하다면 else if에 조건을 추가해서 똑같이 만들어줄 것이고 필요하다면 계속 추가를 할 것인데 위 코드가 바로 OCP를 위반한 코드이다.
+
+### 확장에는 열려있되, 변경에는 닫혀있어야 하는 것이 OCP 원칙의 컨셉이다!
+
+> 무언가를 추가하려고 기존 코드를 변경한다면 OCP를 위반한 것이다.
+
+#### 리팩토링 해보자!
+
+```ts
+interface Doable {
+  do(): void;
+}
+function main(type: Doable) {
+  type.do();
+}
+
+const a = { do() {} };
+const b = { do() {} };
+const c = { do() {} };
+const d = { do() {} };
+const e = { do() {} };
+// 여기서 할당된 각 객체는 싱글턴으로 볼 수 있다(고유한 것임)
+const f = { do() {} }; // 추가된 객체(코드)
+
+main(a);
+```
+
+위 코드는 기존 코드(main 함수, interface)는 변경된 것이 없으며(폐쇄), 새로운 객체는 추가할 수 있다(개방)
