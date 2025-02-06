@@ -187,4 +187,16 @@ function main(type: Doable) {
 function main() {
   a.do();
 }
+
+// 다른 예시
+interface IObj {}
+class Obj extends IObj {}
+
+class A {
+  contructor(obj?: IObj) {}
+  setObj(obj: IObj) {}
+}
+
+new A(new Obj());
+new A().setObj(new Obj());
 ```
