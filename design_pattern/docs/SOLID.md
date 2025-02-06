@@ -117,3 +117,51 @@ console.log(new Penguin().fly()); // throw error;
 // 이런식으로 부모클래스를 자식클래스로 갈아끼울 때 에러가 난다면 LSP 위반 -> 상속 관계가 잘못 되고 있다.
 console.log(new Penguin().fly().at(1));
 ```
+
+---
+
+## ISP - 인터페이스 분리 원칙 (Interface segregation principle)
+
+- 정의: “특정 클라이언트를 위한 인터페이스 여러 개가 범용 인터페이스 하나보다 낫다.”
+
+```ts
+class Animal {
+  isAmimal() {
+    return true;
+  }
+}
+
+// interface는 주로 이렇게 구현함. 타입 정의 후 -> class 생성
+
+// 새는 날 수 없을 수도 있어 fly, warble 속성이 묶여있을 필요가 없는 것이다(ISP 위반)
+// interface IBird {
+//   fly(): string;
+//   warble(): string;
+// }
+
+interface Warble {
+  warble(): string;
+}
+interface Flyable {
+  fly(): string;
+}
+
+// 필수 속성만 implements 해주면 됨!
+class Bird extends Animal implements Warble, Flyable {
+  fly() {
+    return "날아올라";
+  }
+  warble() {
+    return "짹짹쨱";
+  }
+  isBird() {
+    return true;
+  }
+}
+
+class Penguin extends Bird implements Warble {
+  warble() {
+    return "꽥";
+  }
+}
+```
