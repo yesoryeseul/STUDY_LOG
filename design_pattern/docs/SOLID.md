@@ -165,3 +165,26 @@ class Penguin extends Bird implements Warble {
   }
 }
 ```
+
+---
+
+## DIP - 의존관계 역전 원칙 (Dependency inversion principle)
+
+- 정의: 프로그래머는 “추상화에 의존해야지, 구체화에 의존하면 안된다.”
+- `interface`, `abstract class` 이런 것들에 의존하라는 뜻!
+- Dependency inversion principle을 구현하는 방법 중 하나가 의존성 주입(Dependency injection)!
+
+```ts
+interface Doable {
+  do(): void;
+}
+
+// type: Doable -> 의존성 주입의 예시, 매개변수나 생성자를 통해 의존성을 주입
+function main(type: Doable) {
+  type.do();
+}
+// 이런 걸 하지 말아라! -> 강결합이 되어 버림
+function main() {
+  a.do();
+}
+```
