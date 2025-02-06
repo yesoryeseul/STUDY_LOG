@@ -79,3 +79,41 @@ main(a);
 ```
 
 위 코드는 기존 코드(main 함수, interface)는 변경된 것이 없으며(폐쇄), 새로운 객체는 추가할 수 있다(개방)
+
+---
+
+## LSP - 리스코프 치환 원칙 (Liskov substitution principle)
+
+- 정의: “프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위 타입의 인스턴스로 바꿀 수 있어야 한다.”
+- 여기서 정확성이란 타입을 생각하면 된다.
+
+```ts
+class Animal {
+  isAmimal() {
+    return true;
+  }
+}
+
+class Bird extends Animal {
+  fly() {
+    return "날아올라";
+  }
+  isBird() {
+    return true;
+  }
+}
+
+class Penguin extends Bird {
+  // fly에서 에러가 난다. -> LSP 위반
+  // () => void 형식은 () => string 형식에 할당할 수 없다.
+  override fly() {
+    throw new Error("펭귄은 날 수 없다");
+  }
+}
+console.log(new Animal().isAmimal()); // true
+console.log(new Bird().fly()); // 날아올라
+console.log(new Penguin().fly()); // throw error;
+
+// 이런식으로 부모클래스를 자식클래스로 갈아끼울 때 에러가 난다면 LSP 위반 -> 상속 관계가 잘못 되고 있다.
+console.log(new Penguin().fly().at(1));
+```
