@@ -1,20 +1,34 @@
-import Grimpan from "./grimpan.js";
+import IEGrimpan from "./IEGrimpan.js";
+import ChromeGrimpan from "./ChromeGrimpan.js";
 
-console.log(Grimpan.getInstance() === Grimpan.getInstance()); // true
+/**
+ *
+ * Simple Factory(심플 팩토리 패턴)
+ *
+ * 주로 type을 받아 타입에 따라 다른 객체를 반환
+ *
+ * SRP 원칙 위반(변경의 이유가 두 가지다.)
+ * -> 타입 판단을 통해 if/else 분기가 추가된다거나
+ * -> 객체 생성 시 매개변수가 들어갈 수도 있다거나
+ */
+function grimpanFactory(type: string) {
+  if (type === "ie") {
+    return IEGrimpan.getInstance();
+  } else if (type === "chrome") {
+    return ChromeGrimpan.getInstance();
+  }
+  // 사파리가 추가된다면 이렇게 하나만 추가하면 되는 것이 심플 팩토리
+  else if (type === "safari") {
+    return SafariGrimpan.getInstance();
+  } else {
+    throw new Error("일치하는 type이 없습니다");
+  }
+}
 
-// 싱글턴은 강결합되어있다는 단점 또한 있다.
-// 현재 main함수(index.ts)와 Grimpan은 강결합
-// 테스트하기도 어렵다
 function main() {
-  Grimpan.getInstance().initialize();
+  grimpanFactory("ie");
+  grimpanFactory("chrome");
+  grimpanFactory("safari");
 }
+
 main();
-
-// 약한 결합 예시
-function main2(instance: any) {
-  instance.initialize();
-}
-main2(Grimpan.getInstance());
-
-// 테스트는 이런식으로 해야하기 때문..
-// main2(Test.getInstance());
