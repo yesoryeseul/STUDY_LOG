@@ -1,45 +1,36 @@
 // 싱글턴 패턴 - 생성
-
-/**
- * js 파일의 문제점
- *
- * private같은 메서드가 사라짐!
- *
- * => Symbol 사용(js에서 고유한 값)
- */
-
-const GRIMPAN_CONSTRUCTOR_SYMBOL = Symbol();
-
-Symbol() === Symbol(); // false
-
+// class Grimpan {
+//   constructor(canvas: HTMLElement | null) {
+//     if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
+//       throw new Error("엘리먼트를 입력하세요");
+//     }
+//   }
+//   initialize() {}
+//   initializeMenu() {}
+// }
+// 이런식으로 같은 그림판을 불러와도 하나로 인식해야 한다.
+// new Grimpan(document.querySelector("#canvas"));
+// new Grimpan(document.querySelector("#canvas"));
+// new Grimpan(document.querySelector("#canvas"));
+// new Grimpan(document.querySelector("#canvas"));
 // 싱글턴 패턴 구현
 class Grimpan {
-  static instance;
-  constructor(canvas, symbol) {
-    if (symbol !== GRIMPAN_CONSTRUCTOR_SYMBOL) {
-      throw new Error("new를 통해 호출할 수 없습니다.");
+    static instance;
+    constructor(canvas) {
+        if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
+            throw new Error("엘리먼트를 입력하세요");
+        }
     }
-    if (!canvas || !(canvas instanceof HTMLCanvasElement)) {
-      throw new Error("엘리먼트를 입력하세요");
+    initialize() { }
+    initializeMenu() { }
+    static getInstance() {
+        if (!this.instance) {
+            this.instance = new Grimpan(document.querySelector("canvas"));
+        }
+        return this.instance;
     }
-  }
-  initialize() {}
-  initializeMenu() {}
-  static getInstance() {
-    if (!this.instance) {
-      this.instance = new Grimpan(
-        document.querySelector("canvas"),
-        GRIMPAN_CONSTRUCTOR_SYMBOL
-      );
-    }
-    return this.instance;
-  }
 }
 export default Grimpan;
-
-// 서로 다른 심볼이 될 수밖에 없어서 private를 구현할 수 있다.
-// new Grimpan(Symbol()); !== GRIMPAN_CONSTRUCTOR_SYMBOL
-
 /**
  * 싱글턴 패턴은 어떠한 객체가 반드시 하나만 생성되어야 할 때, 그리고 외부(클라이언트)에서 접근이 가능하여야 한다.
  * (*디자인패턴에서 클라이언트는 패턴 코드를 가져다 쓰는 사람!)
