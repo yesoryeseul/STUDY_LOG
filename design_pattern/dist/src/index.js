@@ -1,22 +1,22 @@
 import IEGrimpan from "./IEGrimpan.js";
 import ChromeGrimpan from "./ChromeGrimpan.js";
-import AbstractGrimpanFactory from "./AbstractGrimpanFactory.js";
+import { ChromeGrimpanFactory } from "./GrimpanFactory.js";
 /**
  * Factory Method
  *
  * OCP 원칙에 부합한다.(기존 코드 건드리지 않고 추가 할 수 있음)
  * 단점: 코드의 복잡성이 높다
  */
-class ChromeGrimpanFactory extends AbstractGrimpanFactory {
-    static createGrimpan() {
-        return ChromeGrimpan.getInstance();
-    }
-}
-class IEGrimpanFactory extends AbstractGrimpanFactory {
-    static createGrimpan() {
-        return IEGrimpan.getInstance();
-    }
-}
+// class ChromeGrimpanFactory extends AbstractGrimpanFactory {
+//   static override createGrimpan() {
+//     return ChromeGrimpan.getInstance();
+//   }
+// }
+// class IEGrimpanFactory extends AbstractGrimpanFactory {
+//   static override createGrimpan() {
+//     return IEGrimpan.getInstance();
+//   }
+// }
 // OCP 원칙에 부합한다.(기존 코드 건드리지 않고 추가 할 수 있음)
 // class SafariGrimpanFactory extends ChromeGrimpanFactory {
 //   static override createGrimpan() {
@@ -26,12 +26,17 @@ class IEGrimpanFactory extends AbstractGrimpanFactory {
 function main() {
     // 팩토리 메서드 패턴
     // if문을 없앨 수 있다.
+    const factory = ChromeGrimpanFactory;
     // const grimpan = new ChromeGrimpanFactory().createGrimpan();
-    const grimpan = ChromeGrimpanFactory.createGrimpan();
+    const grimpan = factory.createGrimpan();
     // const grimpan = IEGrimpanFactory.createGrimpan();
     // const grimpan = SafariGrimpanFactory.createGrimpan();
+    // Abstract Factory
+    const grimpanMenu = factory.createGrimpanMenu(grimpan);
+    const grimpanHistory = factory.createGrimpanHistory(grimpan);
     grimpan.initialize();
-    grimpan.initializeMenu();
+    grimpanMenu.initialize();
+    grimpanHistory.initialize();
 }
 /**
  *
