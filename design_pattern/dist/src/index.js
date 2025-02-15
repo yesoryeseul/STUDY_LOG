@@ -32,10 +32,20 @@ function main() {
     // const grimpan = IEGrimpanFactory.createGrimpan();
     // const grimpan = SafariGrimpanFactory.createGrimpan();
     // Abstract Factory
-    const grimpanMenu = factory.createGrimpanMenu(grimpan);
+    const grimpanMenu = factory.createGrimpanMenu(grimpan, document.querySelector("#menu"));
     const grimpanHistory = factory.createGrimpanHistory(grimpan);
     grimpan.initialize();
-    grimpanMenu.initialize();
+    grimpanMenu.initialize([
+        "back",
+        "forward",
+        "color",
+        "pipette",
+        "pen",
+        "circle",
+        "rectangle",
+        "eraser",
+        "save",
+    ]);
     grimpanHistory.initialize();
 }
 /**
