@@ -1,8 +1,21 @@
+class HistoryStack extends Array {
+    clone() {
+        return this.slice();
+    }
+}
 // GrimpanHistory 추상 클래스 생성
 export class GrimpanHistory {
     grimpan;
+    stack;
     constructor(grimpan) {
         this.grimpan = grimpan;
+        this.stack = new HistoryStack();
+    }
+    getStack() {
+        return this.stack.clone();
+    }
+    setStact(stack) {
+        this.stack = stack.clone();
     }
     static getInstance(grimpan) { }
 }

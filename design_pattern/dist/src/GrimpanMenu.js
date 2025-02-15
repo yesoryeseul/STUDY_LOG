@@ -1,4 +1,4 @@
-import { GrimpanMenuBtn } from "./GrimpanMenuBtn.js";
+import { GrimpanMenuBtn, GrimpanMenuInput } from "./GrimpanMenuBtn.js";
 // GrimpanMenu 추상 클래스 생성
 export class GrimpanMenu {
     grimpan;
@@ -27,47 +27,47 @@ export class ChromeGrimpanMenu extends GrimpanMenu {
     drawButtonByType(type) {
         switch (type) {
             case "back": {
-                const btn = new GrimpanMenuBtn.Builder(this, "뒤로", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "뒤로").build();
                 btn.draw();
                 return btn;
             }
             case "forward": {
-                const btn = new GrimpanMenuBtn.Builder(this, "앞으로", "input").build();
+                const btn = new GrimpanMenuInput.Builder(this, "앞으로").build();
                 btn.draw();
                 return btn;
             }
             case "color": {
-                const btn = new GrimpanMenuBtn.Builder(this, "컬러", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "컬러").build();
                 btn.draw();
                 return btn;
             }
             case "pipette": {
-                const btn = new GrimpanMenuBtn.Builder(this, "스포이드", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "스포이드").build();
                 btn.draw();
                 return btn;
             }
             case "eraser": {
-                const btn = new GrimpanMenuBtn.Builder(this, "지우개", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "지우개").build();
                 btn.draw();
                 return btn;
             }
             case "pen": {
-                const btn = new GrimpanMenuBtn.Builder(this, "펜", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "펜").build();
                 btn.draw();
                 return btn;
             }
             case "circle": {
-                const btn = new GrimpanMenuBtn.Builder(this, "원", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "원").build();
                 btn.draw();
                 return btn;
             }
             case "rectangle": {
-                const btn = new GrimpanMenuBtn.Builder(this, "사각형", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "사각형").build();
                 btn.draw();
                 return btn;
             }
             case "save": {
-                const btn = new GrimpanMenuBtn.Builder(this, "저장", "button").build();
+                const btn = new GrimpanMenuBtn.Builder(this, "저장").build();
                 btn.draw();
                 return btn;
             }
